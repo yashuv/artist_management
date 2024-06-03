@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if not active_user %}
+    <div class="dashboard-container">
+        <h1>Artist Dashboard</h1>
+        <p>Welcome to the Dashboard</p>
+        <p><a href="{% url 'user_login' %}">Log In</a> to view the complete dashboard</p>
+    </div>
+{% endif %}
+{% if active_user %}
+    <div class="dashboard-container">
+        <h1>Artist Dashboard</h1>
+        <p>Hi <strong>{{ user }}</strong>! Welcome to the Dashboard</p>
+        <p><a href="{% url 'user_all' %}">View All Artists</a></p>
+        <p><a href="{% url 'user_register' %}">Create New Artist</a></p>
+        <p><a href="{% url 'user_logout' %}">Log Out</a></p>
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_all.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="user-container">
+        <header>User Records</header>
+        {% for user in users %}
+            <div class="user-row">
+                <div class="user-name">{{ user.0 }} {{ user.1 }}</div>
+                <div class="user-actions">
+                    <a href="{% url 'user_view' pk=user.2 %}" id="view">View</a>
+                    <a href="{% url 'user_modify' pk=user.2 %}" id="modify">Edit</a>
+                    <a href="{% url 'user_delete' pk=user.2 %}" id="delete">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="enabled">Previous</a>
+            {% else %}
+                <a class="disabled">Previous</a>
+            {% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="enabled">Next</a>
+            {% else %}
+                <a class="disabled">Next</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

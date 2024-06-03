@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Artist Management System{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">CLOCO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}" id="col">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_register' %}" id="col">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_all' %}" id="col">View</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ml-auto">
+            <ul class="navbar-nav">
+                {% if active_user %}
+                <li class="nav-item">
+                    <a class="btn-link nav-link" href="{% url 'user_logout' %}" id="io">Sign Out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn-link nav-link" href="{% url 'user_login' %}" id="io">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-link nav-link" id="io" href="{% url 'user_register' %}">Sign Up</a>
+                </li>
+
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+<!--  custom static js file> -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</html>

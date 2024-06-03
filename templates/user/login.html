@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<form method="POST" action="{% url 'user_login' %}">
+    {% csrf_token %}
+    <div class="form-box">
+        <div class="login-container" id="login">
+            <div class="top">
+                <header>Login</header>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Email Address" name="email" required>
+                <span class="fa fa-envelope"></span>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password" name="password" required>
+                <span class="fa fa-lock"></span>
+            </div>
+            <div class="input-box">
+                <input type="submit" value="Login" class="btn btn-primary">
+            </div>
+            <div class="input-box">
+                <p>Don't have an account? <a href="{% url 'user_register' %}">Sign Up</a></p>
+            </div>
+            {% if error %}
+            <div id="error" class="error" style="text-align: center;">Wrong Credentials <br>{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</form>
+
+{% endblock %}
