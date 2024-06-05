@@ -15,7 +15,8 @@
                     <h3>User Profile</h3>
                 </div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> {{ first_name }} {{ last_name }}</p>
+                    <p><strong><span style="font-size: larger;">{{ first_name | upper }} {{ last_name | upper }}</span></strong></p>
+                    </span>
                     <p><strong>Email:</strong> {{ email }}</p>
                     {% if gender == 'm' %}
                     <p><strong>Gender:</strong> Male</p>

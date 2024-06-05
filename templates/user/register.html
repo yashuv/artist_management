@@ -15,7 +15,11 @@
         <div class="form-box">
             <div class="login-container" id="register">
                 <div class="top">
-                    <header>Register</header>
+                    {% if modify %}
+                    <header>Update User</header>
+                    {% else %}
+                    <header>Register User</header>
+                    {% endif %}
                 </div>
                 <div class="double-field">
                     <div class="input-box">

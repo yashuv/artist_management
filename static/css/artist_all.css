@@ -1,15 +1,14 @@
 .user-container {
     width: 50%;
     margin: 30px auto;
-    padding: 20px;
+    padding: 17px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header {
     font-size: 1.8em; 
     color: #121312; 
-    text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 15px; 
     font-weight: bold;
 }
 
@@ -18,13 +17,24 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 13px;
-    border-bottom: 1px solid #aea7a7c3;
+    border-bottom: 1px solid #c1bbbbc3;
 }
 
 .user-name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
+}
+
+.user-name a {
     color: #242322cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.user-name a:hover {
+    cursor: pointer;
+    color: rgba(231, 93, 18, 0.79);
+    /* text-decoration: underline; */
 }
 
 .user-actions a {
@@ -36,13 +46,14 @@ header {
     border-radius: 5px;
 }
 
-/* .user-actions a#view {
+
+.user-actions a#view {
     background-color: #007bff;
 }
 
-.user-actions a#modify {
+.user-actions a#edit {
     background-color: #ffc107;
-} */
+}
 
 /* .user-actions a#delete {
     background-color: #dc3545;

@@ -199,16 +199,16 @@ class UpdateUserAPIView(APIView):
         user.gender = request.POST.get("gender")
         user.updated_at = datetime.now()
         user.save()
-        return redirect("/all/")
+        return redirect("/user/all/")
 
 
 class DeleteUserAPIView(APIView):
-    def get(self, request, pk=None):
+    def post(self, request, pk=None):
         if not request.user.is_authenticated:
             return redirect("/user/login/")
         with connection.cursor() as cursor:
             cursor.execute(f"DELETE FROM user_User WHERE id={pk}")
-        return redirect("/all/")
+        return redirect("/user/all/")
 
 
 class ViewUserAPIView(APIView):

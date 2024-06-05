@@ -16,7 +16,7 @@ urlpatterns = [
     path("user/login/", LoginViewAPIView.as_view(), name="user_login"),
     path("user/logout/", LogoutView, name="user_logout"),
     path("user/<int:pk>/", ViewUserAPIView.as_view(), name="user_view"),
-    path("all/", ViewUsersAPIView.as_view(), name="user_all"),
+    path("user/all/", ViewUsersAPIView.as_view(), name="user_all"),
     path("user/edit/<int:pk>/", UpdateUserAPIView.as_view(), name="user_modify"),
     path("user/delete/<int:pk>/", DeleteUserAPIView.as_view(), name="user_delete"),
 ]

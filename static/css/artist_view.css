@@ -1,7 +1,7 @@
 .card {
     border: 1px solid #000;
     margin-top: 45px;
-    max-width: 480px; /* Adjust this value as needed */
+    max-width: 500px; 
     background-color: rgba(255, 255, 255, 0.772);
 }
 
@@ -12,3 +12,7 @@
 .card-body {
     font-size: 1.2em;
 }
+
+/* .card-body a {
+    margin-right: 40px;
+} */

@@ -1,1 +1,50 @@
 {% extends 'layout.html' %}
+
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/artist_view.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Artist Profile</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong><span style="font-size: larger;">{{ name | upper }}</span></strong></p>
+                    <p><strong>Date of Birth:</strong> {{ dob }}</p>
+                    {% if gender == 'm' %}
+                    <p><strong>Gender:</strong> Male</p>
+                    {% elif gender == 'f' %}
+                    <p><strong>Gender:</strong> Female</p>
+                    {% else %}
+                    <p><strong>Gender:</strong> Other</p>
+                    {% endif %}
+                    <p><strong>Address:</strong> {{ address }}</p>
+                    <p><strong>First Release Year:</strong> {{ first_released_year }}</p>
+                    <p><strong>No of Albums Released:</strong> {{ no_of_albums_released }}</p>
+                    <p><strong>Updated At:</strong> {{ updated_at }}</p>
+                    <p><strong>Created At:</strong> {{ created_at }}</p>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3> Song Actions</h3>
+                    </div>
+                    <div class="card-body">
+                        <a href="{% url 'song_register' pk=id %}" class="btn btn-primary ml-5 mr-5">Create Song</a>
+                        <a href="{% url 'song_all' pk=id %}" class="btn btn-secondary">View Songs</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

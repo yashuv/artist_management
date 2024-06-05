@@ -1,24 +1,26 @@
 {% extends 'layout.html' %}
 
+
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/user_all.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/song_all.css' %}">
 {% endblock %}
+
 
 {% block content %}
 
-    <div class="user-container">
-        <header>User Records</header>
-        {% for user in users %}
-            <div class="user-row">
-                <div class="user-name">{{ user.0 | upper }}  {{ user.1 | upper }}</div>
-                <div class="user-actions">
-                    <a href="{% url 'user_view' pk=user.2 %}" id="view" class="btn btn-primary">View</a>
-                    <a href="{% url 'user_modify' pk=user.2 %}" id="modify" class="btn btn-warning">Edit</a>
-                    <form action="{% url 'user_delete' pk=user.2 %}" method="post" style="display: inline;">
+    <div class="song-container">
+        <header>Song Records</header>
+        {% for pk, song_id, song_title in songs %}
+            <div class="song-row">
+                <div class="song-name">{{ song_title | title }}</div>
+                <div class="song-actions">
+                    <a href="{% url 'song_view' pk=pk song_id=song_id %}" id="view">View</a>
+                    <a href="{% url 'song_modify' pk=pk song_id=song_id %}" id="modify">Edit</a>
+                    <form action="{% url 'song_delete' pk=pk song_id=song_id %}" method="post" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" id="delete">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
             </div>

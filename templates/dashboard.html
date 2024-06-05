@@ -15,13 +15,13 @@
         <p><a href="{% url 'user_login' %}">Log In</a> to view the complete dashboard</p>
     </div>
 {% endif %}
+
 {% if active_user %}
     <div class="dashboard-container">
         <h1>Artist Dashboard</h1>
-        <p>Hi <strong>{{ user }}</strong>! Welcome to the Dashboard</p>
-        <p><a href="{% url 'user_all' %}">View All Artists</a></p>
-        <p><a href="{% url 'user_register' %}">Create New Artist</a></p>
-        <p><a href="{% url 'user_logout' %}">Log Out</a></p>
+        <p>Hi <strong>{{ user | upper }}</strong>! Welcome to the Dashboard</p>
+        <p style="margin: 20px 0;"><a href="{% url 'artist_all' %}">View Artists</a></p>
+        <p style=><a href="{% url 'artist_register' %}">Create Artist</a></p>
     </div>
 {% endif %}
 

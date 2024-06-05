@@ -1,1 +1,73 @@
 {% extends 'layout.html' %}
+
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/artist_register.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-container">
+        <div class="form-box">
+            <div class="login-container" id="register">
+                <div class="top">
+                    {% if modify %}
+                        <header>Update Artist</header>
+                    {% else %}
+                        <header>Register Artist</header>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Name" name="name" value="{{ name }}" required>
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="double-field" id="dob">
+                    <div class="input-box" >
+                        <input type="date" class="input-field" id= "date" name="dob" value="{{ dob }}" required>
+                        <span class="dob-icon">DOB</span>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="form-group">
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="m" {% if gender == "m" %}selected{% endif %}>Male</option>
+                            <option value="f" {% if gender == "f" %}selected{% endif %}>Female</option>
+                            <option value="o" {% if gender == "o" %}selected{% endif %}>Other</option>
+                        </select>
+                        <span class="fa fa-user"></span>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Address" name="address" value = "{{ address }}" required>
+                    <span class="fa fa-map-marker"></span>
+                </div>
+                <div class="double-field">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="First Release Year" name="first_release_year" value="{{ first_release_year }}" required>
+                        <span class="fa fa-calendar"></span>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="No of Albums Released" name="no_of_albums_released" value="{{ no_of_albums_released }}" required>
+                        <span class="fa fa-music"></span>
+                    </div>
+                </div>
+                <div class="input-box">
+                    {% if modify %}
+                        <input type="submit" class="submit" value="Update">
+                    {% else %}
+                        <input type="submit" class="submit" value="Register">
+                    {% endif %}
+                </div>
+                {% if error %}
+                <div id="error" class="error" style="text-align: center;">{{ error }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

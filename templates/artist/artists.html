@@ -1,1 +1,61 @@
 {% extends 'layout.html' %}
+
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/artist_all.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="user-container">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <header>Artist Records</header>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <a href="{% url 'export_artists_csv' %}" class="btn btn-success">
+                <i class="fas fa-file-export"></i> Export CSV
+            </a>
+            <form action="{% url 'upload_csv' %}" method="post" enctype="multipart/form-data"
+                class="d-inline-block ml-2" id="uploadForm">
+                {% csrf_token %}
+                <input type="file" name="file" class="d-none" id="fileUpload"
+                    onchange="document.getElementById('uploadForm').submit();">
+                <label for="fileUpload" class="btn btn-success mb-0">
+                    <i class="fas fa-file-import"></i> Upload CSV
+                </label>
+            </form>
+        </div>
+    </div>
+    {% for artist in artists %} <!--  artist.0 is the id and artist.1 is the name -->
+    <div class="user-row">
+        <div class="user-name"><a href="{% url 'artist_view' pk=artist.0 %}">{{ artist.1 | upper }}</a></div>
+        <div class="user-actions">
+            <a href="{% url 'song_all' pk=artist.0 %}" id="view">View Songs</a>
+            <a href="{% url 'artist_modify' pk=artist.0 %}" id="edit">Edit</a>
+            <form action="{% url 'artist_delete' pk=artist.0 %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="enabled">Previous</a>
+        {% else %}
+        <a class="disabled">Previous</a>
+        {% endif %}
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="enabled">Next</a>
+        {% else %}
+        <a class="disabled">Next</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,24 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,110.3,415;1,110.3,415&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wdth,wght@0,110.3,415;1,110.3,415&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
+html, body {
+    height: 100%;
+}
+
+
+
 body {
-    background: linear-gradient(90deg, rgb(188, 187, 214) 0%, rgba(128, 183, 243, 0.543) 0%, rgba(196, 196, 194, 0.443) 100%);
-    font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: 'Roboto', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background: linear-gradient(105deg, #f2f7f6d4, #facbf6c4);
 }
 
 .navbar {
-    background-color: rgba(47, 55, 62, 0.594);
+    background-color: rgba(58, 64, 69, 0.804);
 }
 
 .navbar-brand {
     margin-left: 20px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #ffffff;
     font-weight: bold;
 }
@@ -85,4 +93,3 @@ a#io {
 a#col {
     color: rgb(255, 255, 255);
 }
-

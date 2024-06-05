@@ -1,4 +1,4 @@
-.user-container {
+.song-container {
     width: 50%;
     margin: 30px auto;
     padding: 20px;
@@ -9,25 +9,25 @@ header {
     font-size: 1.8em; 
     color: #121312; 
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 20px; 
     font-weight: bold;
 }
 
-.user-row {
+.song-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 13px;
-    border-bottom: 1px solid #aea7a7c3;
+    padding: 10px;
+    border-bottom: 1px solid #c1bbbbc3;
 }
 
-.user-name {
+.song-name {
     font-size: 20px;
     font-weight: bold;
-    color: #242322cc;
+    color: #4a4c4cf0;
 }
 
-.user-actions a {
+.song-actions a {
     display: inline-block;
     margin-right: 10px;
     padding: 5px 10px;
@@ -36,17 +36,17 @@ header {
     border-radius: 5px;
 }
 
-/* .user-actions a#view {
+.song-actions a#view {
     background-color: #007bff;
 }
 
-.user-actions a#modify {
+.song-actions a#modify {
     background-color: #ffc107;
-} */
+}
 
-/* .user-actions a#delete {
+.song-actions a#delete {
     background-color: #dc3545;
-} */
+}
 
 .pagination {
     display: flex;
